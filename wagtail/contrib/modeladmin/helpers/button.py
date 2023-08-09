@@ -100,12 +100,12 @@ class ButtonHelper:
         usr = self.request.user
         pk = getattr(obj, self.opts.pk.attname)
         btns = []
-        if "inspect" not in exclude and ph.user_can_inspect_obj(usr, obj):
-            btns.append(self.inspect_button(pk, classnames_add, classnames_exclude))
         if "edit" not in exclude and ph.user_can_edit_obj(usr, obj):
             btns.append(self.edit_button(pk, classnames_add, classnames_exclude))
         if "delete" not in exclude and ph.user_can_delete_obj(usr, obj):
             btns.append(self.delete_button(pk, classnames_add, classnames_exclude))
+        if "inspect" not in exclude and ph.user_can_inspect_obj(usr, obj):
+            btns.append(self.inspect_button(pk, classnames_add, classnames_exclude))
         return btns
 
     def get_primary_button(self, obj):
@@ -164,8 +164,6 @@ class PageButtonHelper(ButtonHelper):
         usr = self.request.user
         pk = getattr(obj, self.opts.pk.attname)
         btns = []
-        if "inspect" not in exclude and ph.user_can_inspect_obj(usr, obj):
-            btns.append(self.inspect_button(pk, classnames_add, classnames_exclude))
         if "edit" not in exclude and ph.user_can_edit_obj(usr, obj):
             btns.append(self.edit_button(pk, classnames_add, classnames_exclude))
         if "copy" not in exclude and ph.user_can_copy_obj(usr, obj):
@@ -174,4 +172,6 @@ class PageButtonHelper(ButtonHelper):
             btns.append(self.unpublish_button(pk, classnames_add, classnames_exclude))
         if "delete" not in exclude and ph.user_can_delete_obj(usr, obj):
             btns.append(self.delete_button(pk, classnames_add, classnames_exclude))
+        if "inspect" not in exclude and ph.user_can_inspect_obj(usr, obj):
+            btns.append(self.inspect_button(pk, classnames_add, classnames_exclude))
         return btns

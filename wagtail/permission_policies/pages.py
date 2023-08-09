@@ -167,7 +167,7 @@ class PagePermissionPolicy(OwnershipPermissionPolicy):
             return Page.objects.filter(depth=1)
         else:
             codenames = self._get_permission_codenames(
-                {"add", "change", "publish", "lock"}
+                {"add", "change", "publish", "lock", "view"}
             )
             return [
                 perm.page

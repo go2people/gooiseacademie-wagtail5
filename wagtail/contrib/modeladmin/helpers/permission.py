@@ -79,7 +79,9 @@ class PermissionHelper:
         Return a boolean to indicate whether `user` is permitted to 'inspect'
         a specific `self.model` instance.
         """
-        return self.inspect_view_enabled and self.user_has_any_permissions(user)
+        perm_codename = self.get_perm_codename('view')
+        return self.user_has_specific_permission(user, perm_codename) or self.inspect_view_enabled and self.user_has_any_permissions(
+            user)
 
     def user_can_edit_obj(self, user, obj):
         """
@@ -176,6 +178,10 @@ class PagePermissionHelper(PermissionHelper):
     def user_can_delete_obj(self, user, obj):
         perms = obj.permissions_for_user(user)
         return perms.can_delete()
+
+    def user_can_inspect_obj(self, user, obj):
+        perms = obj.permissions_for_user(user)
+        return perms.can_view()
 
     def user_can_unpublish_obj(self, user, obj):
         perms = obj.permissions_for_user(user)

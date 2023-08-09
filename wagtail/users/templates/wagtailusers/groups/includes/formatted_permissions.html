@@ -30,6 +30,7 @@
                     <th>{% trans "Add" %}</th>
                     <th>{% trans "Change" %}</th>
                     <th>{% trans "Delete" %}</th>
+                    <th>{% trans "View" %}</th>
                     {% if extra_perms_exist.publish %}
                         <th>{% trans "Publish" %}</th>
                     {% endif %}
@@ -64,6 +65,12 @@
                             {% if content_perms_dict.delete %}
                                 <label for="{{ content_perms_dict.delete.checkbox.id_for_label }}" class="visuallyhidden">{{ content_perms_dict.delete.perm.name }}</label>
                                 {{ content_perms_dict.delete.checkbox.tag }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if content_perms_dict.view %}
+                                <label for="{{ content_perms_dict.view.checkbox.id_for_label }}" class="visuallyhidden">{{ content_perms_dict.view.perm.name }}</label>
+                                {{ content_perms_dict.view.checkbox.tag }}
                             {% endif %}
                         </td>
                         {% if extra_perms_exist.publish %}

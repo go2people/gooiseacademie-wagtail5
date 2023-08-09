@@ -113,7 +113,7 @@ class ModelAdmin(WagtailRegisterable):
     list_export = ()
     inspect_view_fields = []
     inspect_view_fields_exclude = []
-    inspect_view_enabled = False
+    inspect_view_enabled = True
     history_view_enabled = True
     empty_value_display = "-"
     list_filter = ()

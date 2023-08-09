@@ -60,7 +60,7 @@ def format_permissions(permission_bound_field):
 
     # Permissions that are known by Wagtail, to be shown under their own columns.
     # Other permissions will be shown under the "custom permissions" column.
-    main_permission_names = ["add", "change", "delete", "publish", "lock", "unlock"]
+    main_permission_names = ["view", "add", "change", "delete", "publish", "lock", "unlock"]
 
     # Only show the columns for these permissions if any of the model has them.
     extra_perms_exist = {
